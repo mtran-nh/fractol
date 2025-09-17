@@ -6,27 +6,50 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 17:44:22 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/15 20:36:08 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/17 21:19:47 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
+static void	ft_putpixel(int x, int y, t_image *img, int color)
+{
+	int	pos;
+
+	pos = (y * img->line_len) + (x * (img->bitppix / 8));
+	*(unsigned int *)(img->pixels_ptr + pos) = color;
+}
+
 static void	handel_pixel(int x, int y, t_fractal *fractal)
 {
-    t_complex   z;
-    t_complex   c;
-    
-    z.x = (scale_num(x, -2, 2, 0, WIDTH));
-    z.y = (scale_num(y, 2, -2, 0, HEIGHT));
-    
-    
+	t_complex	z;
+	t_complex	c;
+	int			i;
+	int			paint;
+
+	z.x = 0.0;
+	z.y = 0.0;
+	c.x = (scale_num(x, -2, 2, 0, WIDTH));
+	c.y = (scale_num(y, 2, -2, 0, HEIGHT));
+	i = 0;
+	while (i < fractal->iteration)
+	{
+		z = sum_cmp(sqrt_cmp(z), c);
+		if ((z.x * z.x) + (z.y * z.y) > fractal->max_value)
+		{
+			paint = scale_num(i, BLACK, WHITE, 0, fractal->iteration);
+			ft_putpixel(x, y, &fractal->img, paint);
+			return ;
+		}
+		i++;
+	}
+	ft_putpixel(x, y, &fractal->img, PURPLE);
 }
 
 void	fractal_render(t_fractal *fractal)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (y < HEIGHT)

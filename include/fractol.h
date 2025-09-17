@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 20:49:46 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/15 20:24:16 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/17 21:20:38 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,20 @@
 
 # define WIDTH 800
 # define HEIGHT 800
+# define MAX_VALUE 4
+# define ITERATION 100
+
+# define BLACK 0x000000
+# define WHITE 0xFFFFFF
+# define RED 0xFF0000
+# define GREEN 0x00FF00
+# define BLUE 0x0000FF
+# define YELLOW 0xFFFF00
+# define CYAN 0x00FFFF
+# define MAGENTA 0xFF00FF
+# define ORANGE 0xFFA500
+# define PURPLE 0x800080
+# define GRAY 0x808080
 
 typedef struct s_complex
 {
@@ -48,6 +62,8 @@ typedef struct s_fractal
 	void	*mlx_connection;
 	void	*mlx_window;
 	t_image	img;
+	int		iteration;
+	int		max_value;
 }			t_fractal;
 
 t_complex	sum_cmp(t_complex z1, t_complex z2);

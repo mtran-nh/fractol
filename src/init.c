@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:18:43 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/15 20:01:19 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/17 20:38:40 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ static void	error_exit(void)
 
 static void	data_init(t_fractal *fractal)
 {
+	fractal->max_value = MAX_VALUE;
+	fractal->iteration = ITERATION;
 }
 
-static void	events_init(t_fractal *fractal)
-{
-}
+// static void	events_init(t_fractal *fractal)
+// {
+// }
 
 void	init_fractal(t_fractal *fractal)
 {
@@ -51,6 +53,5 @@ void	init_fractal(t_fractal *fractal)
 	fractal->img.pixels_ptr = mlx_get_data_addr(fractal->img.img_ptr,
 			&fractal->img.bitppix, &fractal->img.line_len,
 			&fractal->img.endian);
-	// init_events
-	// data_init
+	data_init(fractal);
 }
