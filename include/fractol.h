@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 20:49:46 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/17 21:20:38 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/18 22:21:49 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "../Libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 # include "../minilibx-linux/mlx_int.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -28,6 +30,7 @@
 # define HEIGHT 800
 # define MAX_VALUE 4
 # define ITERATION 100
+# define FRACTAL_COLOR CYAN
 
 # define BLACK 0x000000
 # define WHITE 0xFFFFFF
@@ -64,14 +67,18 @@ typedef struct s_fractal
 	t_image	img;
 	int		iteration;
 	int		max_value;
+	double	move_x;
+	double	move_y;
 }			t_fractal;
 
 t_complex	sum_cmp(t_complex z1, t_complex z2);
 t_complex	sqrt_cmp(t_complex z);
 double		ft_atodbl(char *s);
-double		scale_num(double unscaled_num, double new_min, double new_max,
-				double old_min, double old_max);
+double		scale_num(double unscaled_num, double new[2], double old[2]);
 
 void		init_fractal(t_fractal *fractal);
 void		fractal_render(t_fractal *fractal);
+
+int			key_handle(int keysym, t_fractal *fractal);
+int			close_handle(t_fractal *fractal);
 #endif

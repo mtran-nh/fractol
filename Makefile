@@ -6,7 +6,7 @@
 #    By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/13 17:43:30 by mtran-nh          #+#    #+#              #
-#    Updated: 2025/09/17 21:16:24 by mtran-nh         ###   ########.fr        #
+#    Updated: 2025/09/18 22:09:13 by mtran-nh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS = 	$(SRC_DIR)init.c \
 		$(SRC_DIR)render.c \
 		$(SRC_DIR)math.c \
 		$(SRC_DIR)main.c \
+		$(SRC_DIR)events.c
 		
 OBJS = $(SRCS:.c=.o)
 
