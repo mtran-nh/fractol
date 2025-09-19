@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 20:49:46 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/18 22:21:49 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/19 13:21:17 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_fractal
 	int		max_value;
 	double	move_x;
 	double	move_y;
+	double	zoom;
 }			t_fractal;
 
 t_complex	sum_cmp(t_complex z1, t_complex z2);
@@ -81,4 +82,5 @@ void		fractal_render(t_fractal *fractal);
 
 int			key_handle(int keysym, t_fractal *fractal);
 int			close_handle(t_fractal *fractal);
+int			mouse_handle(int button, int x, int y, t_fractal *fractal);
 #endif

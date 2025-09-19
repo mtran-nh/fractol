@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:18:43 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/18 22:16:04 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/19 12:59:13 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	data_init(t_fractal *fractal)
 	fractal->iteration = ITERATION;
 	fractal->move_x = 0.0;
 	fractal->move_y = 0.0;
+	fractal->zoom = 1.0;
 }
 
 static void	events_init(t_fractal *fractal)
@@ -31,6 +32,8 @@ static void	events_init(t_fractal *fractal)
 	mlx_hook(fractal->mlx_window, KeyPress, KeyPressMask, key_handle, fractal);
 	mlx_hook(fractal->mlx_window, DestroyNotify, StructureNotifyMask,
 		close_handle, fractal);
+	mlx_hook(fractal->mlx_window, ButtonPress, ButtonPressMask, mouse_handle,
+		fractal);
 }
 
 void	init_fractal(t_fractal *fractal)
@@ -58,6 +61,6 @@ void	init_fractal(t_fractal *fractal)
 	fractal->img.pixels_ptr = mlx_get_data_addr(fractal->img.img_ptr,
 			&fractal->img.bitppix, &fractal->img.line_len,
 			&fractal->img.endian);
-	data_init(fractal);
 	events_init(fractal);
+	data_init(fractal);
 }
