@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:18:43 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/19 12:59:13 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/19 17:45:06 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static void	events_init(t_fractal *fractal)
 	mlx_hook(fractal->mlx_window, DestroyNotify, StructureNotifyMask,
 		close_handle, fractal);
 	mlx_hook(fractal->mlx_window, ButtonPress, ButtonPressMask, mouse_handle,
+		fractal);
+	mlx_hook(fractal->mlx_window, MotionNotify, PointerMotionMask, track,
 		fractal);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 20:49:46 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/19 13:21:17 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/19 17:42:58 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@
 
 # define ERROR_MSG "enter wrong name"
 
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 1000
+# define HEIGHT 1000
 # define MAX_VALUE 4
 # define ITERATION 100
-# define FRACTAL_COLOR CYAN
+# define FRACTAL_COLOR BLACK
 
 # define BLACK 0x000000
 # define WHITE 0xFFFFFF
@@ -70,6 +70,8 @@ typedef struct s_fractal
 	double	move_x;
 	double	move_y;
 	double	zoom;
+	double	julia_x;
+	double	julia_y;
 }			t_fractal;
 
 t_complex	sum_cmp(t_complex z1, t_complex z2);
@@ -83,4 +85,5 @@ void		fractal_render(t_fractal *fractal);
 int			key_handle(int keysym, t_fractal *fractal);
 int			close_handle(t_fractal *fractal);
 int			mouse_handle(int button, int x, int y, t_fractal *fractal);
+int			track(int x, int y, t_fractal *fractal);
 #endif

@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 22:03:57 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/15 20:02:32 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/19 17:35:01 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	main(int ac, char **av)
 		fractal.name = av[1];
 		if (!ft_strncmp(fractal.name, "julia", 5))
 		{
+			fractal.julia_x = ft_atodbl(av[2]);
+			fractal.julia_y = ft_atodbl(av[3]);
 		}
 		init_fractal(&fractal);
 		fractal_render(&fractal);

@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 21:53:40 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/19 13:22:32 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/19 17:42:23 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	key_handle(int keysym, t_fractal *fractal)
 	return (0);
 }
 
+// khong co x va y thi sai prototype->segfault
 int	mouse_handle(int button, int x, int y, t_fractal *fractal)
 {
 	(void)x;
@@ -53,4 +54,15 @@ int	mouse_handle(int button, int x, int y, t_fractal *fractal)
 	return (0);
 }
 
-// khong co x va y thi sai prototype->segfault
+int	track(int x, int y, t_fractal *fractal)
+{
+	if (!ft_strncmp(fractal->name, "julia", 5))
+	{
+		fractal->julia_x = scale_num(x, (double [2]){-2, 2}, (double [2]){0,
+				WIDTH}) * fractal->zoom + fractal->move_x;
+		fractal->julia_y = scale_num(y, (double [2]){2, -2}, (double [2]){0,
+				HEIGHT}) * fractal->zoom + fractal->move_y;
+		fractal_render(fractal);
+	}
+	return (0);
+}
