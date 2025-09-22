@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 20:49:46 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/22 18:05:43 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/22 19:30:02 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 
 # define ERROR_MSG "enter wrong name"
 
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 1000
+# define HEIGHT 1000
 # define MAX_VALUE 4
 # define ITERATION 50
 # define FRACTAL_COLOR BLACK
