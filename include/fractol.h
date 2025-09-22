@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 20:49:46 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/19 17:42:58 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/22 18:05:43 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@
 
 # define ERROR_MSG "enter wrong name"
 
-# define WIDTH 1000
-# define HEIGHT 1000
+# define WIDTH 800
+# define HEIGHT 800
 # define MAX_VALUE 4
-# define ITERATION 100
+# define ITERATION 50
 # define FRACTAL_COLOR BLACK
+# define DEPTH 8
 
 # define BLACK 0x000000
 # define WHITE 0xFFFFFF
@@ -49,6 +50,12 @@ typedef struct s_complex
 	double	x;
 	double	y;
 }			t_complex;
+
+typedef struct s_point
+{
+	double	x;
+	double	y;
+}			t_point;
 
 typedef struct s_image
 {
@@ -72,12 +79,17 @@ typedef struct s_fractal
 	double	zoom;
 	double	julia_x;
 	double	julia_y;
+
 }			t_fractal;
 
 t_complex	sum_cmp(t_complex z1, t_complex z2);
 t_complex	sqrt_cmp(t_complex z);
 double		ft_atodbl(char *s);
+
 double		scale_num(double unscaled_num, double new[2], double old[2]);
+double		fmin(double a, double b);
+double		fmax(double a, double b);
+void		ft_putpixel(int x, int y, t_image *img, int color);
 
 void		init_fractal(t_fractal *fractal);
 void		fractal_render(t_fractal *fractal);
@@ -86,4 +98,6 @@ int			key_handle(int keysym, t_fractal *fractal);
 int			close_handle(t_fractal *fractal);
 int			mouse_handle(int button, int x, int y, t_fractal *fractal);
 int			track(int x, int y, t_fractal *fractal);
+
+void		sierpinski(t_image *img, t_point pts[3], int depth);
 #endif

@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 21:28:18 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/18 22:21:34 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/22 17:40:17 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,3 @@ double	ft_atodbl(char *s)
 	}
 	return ((int_part + dec_part) * sign);
 }
-
-// 0 for min
-// 1 for max
-double	scale_num(double unscaled_num, double new[2], double old[2])
-{
-	return ((unscaled_num - old[0]) * (new[1] - new[0]) / (old[1] - old[0])
-		+ new[0]);
-}
-
-// double	scale_num(double unscaled_num, double new_min, double new_max,
-// 		double old_min, double old_max)
-// {
-// 	return ((unscaled_num - old_min) * (new_max - new_min) / (old_max - old_min)
-// 		+ new_min);
-// }

@@ -6,22 +6,11 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 17:44:22 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/19 17:43:46 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/22 18:06:00 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
-
-static void	ft_putpixel(int x, int y, t_image *img, int color)
-{
-	int	pos;
-
-	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
-	{
-		pos = (y * img->line_len) + (x * (img->bitppix / 8));
-		*(unsigned int *)(img->pixels_ptr + pos) = color;
-	}
-}
 
 static void	set_c(t_complex *z, t_complex *c, t_fractal *fractal)
 {
@@ -65,21 +54,51 @@ static void	handel_pixel(int x, int y, t_fractal *fractal)
 	ft_putpixel(x, y, &fractal->img, FRACTAL_COLOR);
 }
 
+static void	init_triangle(t_point pts[3])
+{
+	pts[0].x = WIDTH / 2;
+	pts[0].y = 50;
+	pts[1].x = 50;
+	pts[1].y = HEIGHT - 50;
+	pts[2].x = WIDTH - 50;
+	pts[2].y = HEIGHT - 50;
+}
+
+static void	apply_transform(t_point pts[3], t_fractal *fractal)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 3)
+	{
+		pts[i].x = pts[i].x * fractal->zoom + fractal->move_x;
+		pts[i].y = pts[i].y * fractal->zoom + fractal->move_y;
+	}
+}
+
 void	fractal_render(t_fractal *fractal)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
+	t_point	triangle[3];
 
-	y = 0;
-	while (y < HEIGHT)
+	ft_bzero(fractal->img.pixels_ptr, WIDTH * HEIGHT * (fractal->img.bitppix
+			/ 8));
+	if (!ft_strncmp(fractal->name, "sierpinski", 10))
 	{
-		x = 0;
-		while (x < WIDTH)
+		init_triangle(triangle);
+		apply_transform(triangle, fractal);
+		sierpinski(&fractal->img, triangle, DEPTH);
+	}
+	else
+	{
+		y = -1;
+		while (++y < HEIGHT)
 		{
-			handel_pixel(x, y, fractal);
-			x++;
+			x = -1;
+			while (++x < WIDTH)
+				handel_pixel(x, y, fractal);
 		}
-		y++;
 	}
 	mlx_put_image_to_window(fractal->mlx_connection, fractal->mlx_window,
 		fractal->img.img_ptr, 0, 0);
