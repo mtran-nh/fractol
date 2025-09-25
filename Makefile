@@ -6,13 +6,13 @@
 #    By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/13 17:43:30 by mtran-nh          #+#    #+#              #
-#    Updated: 2025/09/22 17:45:22 by mtran-nh         ###   ########.fr        #
+#    Updated: 2025/09/25 17:17:03 by mtran-nh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 SRC_DIR = src/
 INC_DIR = include/
@@ -37,6 +37,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C $(LIBFT_DIR)
+	make -C $(MLX_DIR)
 	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) $(LIBS) -o $(NAME)
 
 %.o: %.c
@@ -45,6 +46,7 @@ $(NAME): $(OBJS)
 clean:
 	rm -f $(OBJS)
 	make -C $(LIBFT_DIR) clean
+	make -C $(MLX_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
