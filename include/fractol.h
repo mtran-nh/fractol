@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 20:49:46 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/22 19:30:02 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/25 16:52:10 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define ERROR_MSG "enter wrong name"
+# define ERROR_MSG "input: ./fractol fractol_name"
 
 # define WIDTH 1000
 # define HEIGHT 1000
 # define MAX_VALUE 4
 # define ITERATION 50
 # define FRACTAL_COLOR BLACK
-# define DEPTH 8
+# define SIERPINSKI GREEN 
+# define DEPTH 7
 
 # define BLACK 0x000000
 # define WHITE 0xFFFFFF

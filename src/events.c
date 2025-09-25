@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 21:53:40 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/19 17:56:40 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/25 16:52:18 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	key_handle(int keysym, t_fractal *fractal)
 	if (keysym == XK_Escape)
 		close_handle(fractal);
 	if (keysym == XK_Left)
-		fractal->move_x += (0.5 * fractal->zoom);
-	else if (keysym == XK_Right)
 		fractal->move_x -= (0.5 * fractal->zoom);
+	else if (keysym == XK_Right)
+		fractal->move_x += (0.5 * fractal->zoom);
 	else if (keysym == XK_Up)
 		fractal->move_y -= (0.5 * fractal->zoom);
 	else if (keysym == XK_Down)
@@ -41,7 +41,6 @@ int	key_handle(int keysym, t_fractal *fractal)
 	return (0);
 }
 
-// khong co x va y thi sai prototype->segfault
 int	mouse_handle(int button, int x, int y, t_fractal *fractal)
 {
 	(void)x;

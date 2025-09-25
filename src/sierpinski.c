@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 16:44:32 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/22 17:30:48 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/23 13:16:40 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	sierpinski(t_image *img, t_point pts[3], int depth)
 
 	if (depth <= 0)
 	{
-		triangle(img, pts, WHITE);
+		triangle(img, pts, SIERPINSKI);
 		return ;
 	}
 	get_subtriangle(pts, t1, t2, t3);
